@@ -30,7 +30,15 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num % 15 === 0) {
+        return 'FizzBuzz';
+    } else if (num % 3 === 0) {
+        return 'Fizz';
+    } else if (num % 5 === 0) {
+        return 'Buzz';
+    } else {
+        return num;
+    }
 }
 
 
@@ -46,7 +54,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if(n === 0) {
+        return 1;
+     }
+     return n * getFactorial(n - 1);
 }
 
 
@@ -63,7 +74,7 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    return (n2 + n1) * (n2 - n1 + 1)/2;
 }
 
 
@@ -82,7 +93,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    if (a >= (b + c) || b >= (a + c) || c >= (a + b)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -119,7 +134,10 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    throw new Error('Not implemented');
+    if (rect1.left > (rect2.left + rect2.width) || rect1.top > (rect2.top + rect2.height) || rect2.left > (rect1.left + rect1.width) || rect2.top > (rect1.top + rect1.height)) {
+        return false;
+    } 
+    return true;
 }
 
 
@@ -150,7 +168,14 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    throw new Error('Not implemented');
+    let xc = circle.center.x,
+        yc = circle.center.y,
+        xp = point.x,
+        yp = point.y;
+    if (Math.hypot((xp-xc),(yp-yc)) < circle.radius) {
+        return true;
+    }
+    return false;
 }
 
 
@@ -166,7 +191,13 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    for (var i = 0; i < str.length; i++) {
+        var c = str.charAt(i);
+        if (str.indexOf(c) == i && str.indexOf(c, i + 1) == -1) {
+          return c;
+        }
+      }
+      return null;
 }
 
 

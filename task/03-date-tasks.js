@@ -22,7 +22,7 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 function parseDataFromRfc2822(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 /**
@@ -37,7 +37,7 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 function parseDataFromIso8601(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 
@@ -56,7 +56,7 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+   return (date.getFullYear() % 100 === 0) ? (date.getFullYear() % 400 === 0) : (date.getFullYear() % 4 === 0);
 }
 
 
@@ -76,7 +76,33 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+   let difference = '';
+   if (endDate.getHours() - startDate.getHours() < 10) {
+      difference += '0' + (endDate.getHours() - startDate.getHours());
+   } else {
+      difference += (endDate.getHours() - startDate.getHours());
+   }
+   difference += ':';
+   if (endDate.getMinutes() - startDate.getMinutes() < 10) {
+      difference += '0' + (endDate.getMinutes() - startDate.getMinutes());
+   } else {
+      difference += (endDate.getMinutes() - startDate.getMinutes());
+   }
+   difference += ':';
+   if (endDate.getSeconds() - startDate.getSeconds() < 10) {
+      difference += '0' + (endDate.getSeconds() - startDate.getSeconds());
+   } else {
+      difference += (endDate.getSeconds() - startDate.getSeconds());
+   }
+   difference += '.';
+   if (endDate.getMilliseconds() - startDate.getMilliseconds() < 10) {
+      difference += '00' + (endDate.getMilliseconds() - startDate.getMilliseconds());
+   } else if (endDate.getMilliseconds() - startDate.getMilliseconds() < 100) {
+      difference += '0' + (endDate.getMilliseconds() - startDate.getMilliseconds());
+   } else {
+      difference += (endDate.getMilliseconds() - startDate.getMilliseconds());
+   }
+   return difference;
 }
 
 
@@ -94,7 +120,7 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+   throw new Error('Not implemented');
 }
 
 
