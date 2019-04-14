@@ -223,7 +223,21 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    const arr = [];
+    arr.push(a, b);
+    arr.sort( (a, b) => a-b );
+    let str = arr.join(', ');
+    if(isStartIncluded) {
+        str = '[' + str;
+    } else {
+        str = '(' + str;
+    }
+    if(isEndIncluded) {
+        str += ']';
+    } else {
+        str += ')';
+    }
+    return str;
 }
 
 
@@ -240,7 +254,9 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    const arr = str.split('');
+    arr.reverse();
+    return arr.join('');
 }
 
 
@@ -257,7 +273,8 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    const reversed = num.toString().split('').reverse().join('');
+    return Math.sign(num) * parseInt(reversed);
 }
 
 
